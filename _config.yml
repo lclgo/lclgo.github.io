@@ -2,7 +2,7 @@
 title: Hmmmm
 SEOTitle: 李存龙的博客
 header-img: img/home-bg.jpg
-email: huxpro@gmail.com
+email: licunlong@hotmail.com
 description: "我的博客"
 keyword: "blog"
 url: "https://geass-ll.github.io/" # your host, for absolute URL
@@ -56,9 +56,6 @@ kramdown:
       line_numbers: true
       start_line: 1
 
-# Disqus settings
-disqus_username: hux
-
 # Netease settings
 netease_comment: false
 
@@ -85,5 +82,5 @@ page-mathjax: false
 # Friends
 friends:
   [
-    { title: "百度", href: "http://www.google.com/" },
+    { title: "谷歌", href: "http://www.google.com/" },
   ]
