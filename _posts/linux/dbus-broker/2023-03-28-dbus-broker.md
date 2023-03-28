@@ -10,4 +10,4 @@ tags:
 
 ## dbus-broker test-reexecute的最终逻辑
 
-![img](./test-reexecute.drawio.png)
+![img](test-reexecute.drawio.png)
