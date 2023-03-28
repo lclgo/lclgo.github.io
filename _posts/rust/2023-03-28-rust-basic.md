@@ -8,8 +8,6 @@ tags:
     - rust
 ---
 
-# rust
-
 ## trait
 
 <https://zhuanlan.zhihu.com/p/127365605> trait的用法

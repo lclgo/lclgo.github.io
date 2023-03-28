@@ -9,8 +9,6 @@ tags:
     - linux
 ---
 
-# linux的一些工具配置
-
 ## samba
 
 在debian配置samba：
