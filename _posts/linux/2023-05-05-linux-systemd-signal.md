@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "linux 1号进程的特殊处理逻辑"
+title:        "linux 1号进程信号处理的特殊处理逻辑"
 author:       "licunlong"
 header-style: text
 catalog:      true
@@ -140,3 +140,5 @@ int reset_all_signal_handlers(void) {
         return r;
 }
 ```
+
+这里给出最基础的代码走读逻辑，后续再遇到相关问题时继续完善。
