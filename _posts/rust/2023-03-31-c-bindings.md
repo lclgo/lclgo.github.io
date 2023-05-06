@@ -44,9 +44,18 @@ pub fn selinux_enabled() -> bool {
 let my_char = std::ffi::CString::new("Hello").unwrap();
 // 在需要使用`c_char`的地方，使用`my_char.as_ptr()`。
 
-// 结构体的初始化
+// 结构体全零初始化
 let mut pglob: libc::glob_t = unsafe {
     std::mem::zeroed()
 };
 // 需要使用结构体的指针时：`&mut pglob`
+// 结构体直接初始化
+let action = sigaction {
+    sa_sigaction: handle_sigint as usize,
+    sa_mask: 0,
+    sa_flags: 0,
+    sa_restorer: None,
+};
+// 空指针NULL
+std::ptr::null()和std::ptr::null_mut() //多数场景用的是后者。
 ```

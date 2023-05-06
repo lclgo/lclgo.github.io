@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "linux 1号进程信号处理的特殊处理逻辑"
+title:        "linux 1号进程（init）信号处理的特殊处理逻辑"
 author:       "licunlong"
 header-style: text
 catalog:      true
@@ -9,7 +9,7 @@ tags:
     - linux
 ---
 
-1号进程在linux的信号处理流程中有特殊的处理逻辑。例如我们向普通的进程发送SIGKILL，进程会退出；向1号进程发送SIGKILL则好像无事发生过。
+1号进程（init进程）在linux的信号处理流程中有特殊的处理逻辑。例如我们向普通的进程发送SIGKILL，进程会退出；向1号进程发送SIGKILL则好像无事发生过。
 
 ```
 [root@openEuler-2203 test]# sleep 1234 &
@@ -118,7 +118,9 @@ int reset_all_signal_handlers(void) {
 
 ## systemd还是会响应一些信号？
 
-有经验的读者会注意到，SIGSEGV、SIGBUS、SIGABRT等致命信号也会使systemd产生coredump，此外systemd还会响应SIGTERM、SIGHUP等信号分别执行`systemctl daemon-reexec`，`systemctl daemon-reload`。这是因为systemd在通过`reset_all_signal_handlers()`重设信号处理函数后，调用`install_crash_handler()`为7种致命信号注册了新的信号处理函数：
+有经验的读者会注意到，SIGSEGV、SIGBUS、SIGABRT等致命信号会使systemd产生coredump，此外systemd还会响应SIGTERM、SIGHUP等信号分别执行`systemctl daemon-reexec`，`systemctl daemon-reload`。
+
+触发coredump是因为systemd在通过`reset_all_signal_handlers()`重设信号处理函数后，调用`install_crash_handler()`为7种致命信号注册了新的信号处理函数：
 
 ```c
 /* systemd: src/basic/constant.h */
