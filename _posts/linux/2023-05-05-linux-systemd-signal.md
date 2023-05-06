@@ -38,13 +38,13 @@ linux有以下几个地方会特殊处理1号进程
 
 ### SIGNAL_UNKILLABLE
 
-SIGNAL_UNKILLABLE定义：
+从SIGNAL_UNKILLABLE定义的注释，我们能清楚地看到，这个标记位是1号进程独享的，其作用就是会忽略发向1号进程的致命信号。
 
 ```c
 #define SIGNAL_UNKILLABLE	0x00000040 /* for init: ignore fatal signals */
 ```
 
-当通过`is_child_reaper()`函数判断进程为当前名字空间的1号进程时，内核会为该进程的signal->flags新增SIGNAL_UNKILLABLE标记位。
+通过`is_child_reaper()`函数判断进程为当前名字空间的1号进程时，内核会为该进程的signal->flags新增SIGNAL_UNKILLABLE标记位。
 
 ```c
 /* kernel/fork.c */
@@ -55,6 +55,8 @@ if (is_child_reaper(pid)) {
 ```
 
 ## 如何屏蔽发向1号进程的信号？
+
+`sig_task_ignored()`函数是屏蔽发向1号进程信号的主要逻辑。
 
 ```c
 /* kernel/signal.c */
@@ -81,39 +83,12 @@ static bool sig_task_ignored(struct task_struct *t, int sig, bool force)
 }
 ```
 
-1. 首先，如果是1号进程，并且发送的信号为SIGKILL/SIGSTOP，那么信号不会被发送出去。
-2. 其次，如果这个信号处理函数为缺省的，信号也不会发送出去。
+1. 第一个if：如果是1号进程，并且发送的信号为SIGKILL/SIGSTOP，那么信号不会被发送出去。
+2. 第二个if：如果这个信号处理函数为缺省的，并且已经设置了SIGNAL_UNKILLABLE标记位，信号也不会发送出去。
 
-鉴于第1点，1号进程肯定会屏蔽掉SIGKILL/SIGSTOP信号。而第2点，因为1号进程为SIGSEGV/SIGBUS/等7种信号定义了信号处理函数，因此也能正常被处理。
-
-```c
-/* systemd: src/basic/constant.h */
-#define SIGNALS_CRASH_HANDLER SIGSEGV,SIGILL,SIGFPE,SIGBUS,SIGQUIT,SIGABRT
-
-/* systemd: src/core/crash-handler.c */
-void install_crash_handler(void) {
-        static const struct sigaction sa = {
-                .sa_sigaction = crash,
-                .sa_flags = SA_NODEFER | SA_SIGINFO, /* So that we can raise the signal again from the signal handler */
-        };
-        int r;
-
-        /* We ignore the return value here, since, we don't mind if we cannot set up a crash handler */
-        r = sigaction_many(&sa, SIGNALS_CRASH_HANDLER);
-        if (r < 0)
-                log_debug_errno(r, "I had trouble setting up the crash handler, ignoring: %m");
-}
-```
-
-除了上述9种信号和及外的其他信号，systemd均使用了SIG_DFL作为信号处理函数。
+根据第一个if判断，1号进程肯定会屏蔽掉SIGKILL/SIGSTOP信号。由于systemd在启动的早期阶段调用`reset_all_signal_handlers()`将所有的信号处理函数设置为SIG_DFL，因此根据第二个if判断，其他信号也不会发送到1号进程。
 
 ```c
-/* systemd将SIG_IGN作为SIGPIPE的信号处理函数。
- * systemd: src/core/constant.h */
-#define SIGNALS_IGNORE SIGPIPE
-/* systemd: src/core/main.c */
-(void) ignore_signals(SIGNALS_IGNORE);
-
 /* systemd在main函数的最开始会调用reset_all_signal_handlers将所有
  * 信号的信号处理函数修改为SIG_DFL。
  * systemd: src/basic/signal-util.c */
@@ -139,6 +114,41 @@ int reset_all_signal_handlers(void) {
 
         return r;
 }
+```
+
+## systemd还是会响应一些信号？
+
+有经验的读者会注意到，SIGSEGV、SIGBUS、SIGABRT等致命信号也会使systemd产生coredump，此外systemd还会响应SIGTERM、SIGHUP等信号分别执行`systemctl daemon-reexec`，`systemctl daemon-reload`。这是因为systemd在通过`reset_all_signal_handlers()`重设信号处理函数后，调用`install_crash_handler()`为7种致命信号注册了新的信号处理函数：
+
+```c
+/* systemd: src/basic/constant.h */
+#define SIGNALS_CRASH_HANDLER SIGSEGV,SIGILL,SIGFPE,SIGBUS,SIGQUIT,SIGABRT
+
+/* systemd: src/core/crash-handler.c */
+void install_crash_handler(void) {
+        static const struct sigaction sa = {
+                .sa_sigaction = crash,
+                .sa_flags = SA_NODEFER | SA_SIGINFO, /* So that we can raise the signal again from the signal handler */
+        };
+        int r;
+
+        /* We ignore the return value here, since, we don't mind if we cannot set up a crash handler */
+        r = sigaction_many(&sa, SIGNALS_CRASH_HANDLER);
+        if (r < 0)
+                log_debug_errno(r, "I had trouble setting up the crash handler, ignoring: %m");
+}
+```
+
+SIGTERM、SIGHUP等信号则是systemd在`manager_setup_signals()`函数中，通过调用`signalfd()`创建信号监听fd，使用`sd_event_add_io()`监听的。这种监听方法允许systemd在合适的时间处理这些信号，并且能够接受`manager`作为入参做更多的事情。
+
+除此之外，systemd还主动忽略了SIGPIPE信号：
+
+```c
+/* systemd将SIG_IGN作为SIGPIPE的信号处理函数。
+ * systemd: src/core/constant.h */
+#define SIGNALS_IGNORE SIGPIPE
+/* systemd: src/core/main.c */
+(void) ignore_signals(SIGNALS_IGNORE);
 ```
 
 这里给出最基础的代码走读逻辑，后续再遇到相关问题时继续完善。
