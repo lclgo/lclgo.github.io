@@ -9,4 +9,7 @@ tags:
     - linux
 ---
 
-文章链接：<https://zhuanlan.zhihu.com/p/452423278>
+文章链接
+
+1. <https://zhuanlan.zhihu.com/p/452423278>
+2. <https://zhuanlan.zhihu.com/p/428216764>
