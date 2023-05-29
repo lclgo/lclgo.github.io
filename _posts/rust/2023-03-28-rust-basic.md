@@ -163,3 +163,30 @@ fn main() {
 ```
 
 `impl Error for MyError`只需要实现`Debug`，`std::fmt::Display`即可。Error提供了`source`函数，能够通过这个函数将一些报错跨越抽象层传递上来。
+
+## Copy 和 Clone 的区别
+
+官方手册在这里：<https://doc.rust-lang.org/std/clone/trait.Clone.html>
+
+* Copy是为了告诉编译器，在`a = b`时使用copy语义而不是move语义。
+* Copy是自动进行的，而Clone需要程序员主动使用。
+* Copy是对栈上的数据进行按位复制，一个结构体，只有当它全部的成员均支持Copy时，该结构体才支持Copy。Clone是对堆上的数据进程复制，由用户自己保证数据复制的有效性。
+* Copy、Clone之间不是简单的深拷贝、浅拷贝的关系，实际上两个均应该被看作是深拷贝。
+* 实现Copy必须要实现Clone，即#[derive(Clone, Copy)]。原因是rust的规定：当实现了Copy时，如果调用a.clone()，这时clone的含义必须是简单内存拷贝，不能由用户自己随便实现Clone。Types that are Copy should have a trivial implementation of Clone. More formally: if `T: Copy`, `x: T`, and `y: &T`, then `let x = y.clone();` is equivalent to `let x = *y;`. 
+
+整体来讲：Copy使用的要求更加苛刻，但能用的肯定不会出问题，用起来简单。Clone要求没有那么苛刻，一切责任，用户自负。
+
+一个clone的神奇的用法：去掉&。
+
+对一个`a: &T`类型的数据，`a.clone()`的类型可以转换为`T`，源码：
+
+```rs
+pub trait Clone: Sized {
+    // Required method
+    fn clone(&self) -> Self;
+
+    // Provided method
+    fn clone_from(&mut self, source: &Self) { ... }
+}
+```
+
