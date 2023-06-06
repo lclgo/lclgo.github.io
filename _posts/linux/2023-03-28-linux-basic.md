@@ -86,3 +86,13 @@ headerbar {
     padding: 0px;
 }
 ```
+
+## NetworkManager
+
+NetworkManager自动根据`/etc/sysconfig/net-scripts/`目录下的配置来配置网卡。需要注意的是，这里的配置文件是用户自己写的，可能有冗余，也可能跟内核实际的设备有差异，因此无法保证这里的配置能够正常生效。
+
+**内核观测到的网卡设备，或者说实际的网卡设备：** 可以通过`ifconfig -a`获取到。
+
+**udev可能会根据udev规则修改网卡的名称，修改后可能导致/etc/sysconfig/net-scripts/目录下的配置因为匹配不到网卡名无法生效。**
+
+**dhclient只是会向dhserver获取申请动态IP。**
