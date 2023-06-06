@@ -96,3 +96,5 @@ NetworkManager自动根据`/etc/sysconfig/net-scripts/`目录下的配置来配�
 **udev可能会根据udev规则修改网卡的名称，修改后可能导致/etc/sysconfig/net-scripts/目录下的配置因为匹配不到网卡名无法生效。**
 
 **dhclient只是会向dhserver获取申请动态IP。**
+
+**eth0** 名字的网卡是内核的名字。<https://www.cnblogs.com/yinfutao/p/9634350.html>
