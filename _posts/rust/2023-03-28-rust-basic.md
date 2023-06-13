@@ -190,3 +190,8 @@ pub trait Clone: Sized {
 }
 ```
 
+## 如何将rust的trait转换为对应的struct？
+
+实测可行：
+
+<https://stackoverflow.com/questions/33687447/how-to-get-a-reference-to-a-concrete-type-from-a-trait-object>
