@@ -24,3 +24,8 @@ tags:
 
 * 某些驱动程序可能陷入死循环，使系统崩溃。
 * 某些驱动程序或系统调用可能执行很慢，无法将CPU归还给调度器，导致其他程序被阻塞。
+
+## 进程优先级的高低
+
+<http://www.wowotech.net/process_management/process-priority.html>
+
