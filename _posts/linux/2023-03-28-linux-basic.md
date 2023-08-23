@@ -98,3 +98,7 @@ NetworkManager自动根据`/etc/sysconfig/net-scripts/`目录下的配置来配�
 **dhclient只是会向dhserver获取申请动态IP。**
 
 **eth0** 名字的网卡是内核的名字。<https://www.cnblogs.com/yinfutao/p/9634350.html>
+
+## debian的intel网卡驱动安装
+
+搜索firmware-iwlwifi下载安装。<https://packages.debian.org/search?keywords=firmware-iwlwifi>
