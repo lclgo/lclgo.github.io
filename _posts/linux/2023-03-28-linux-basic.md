@@ -102,3 +102,7 @@ NetworkManager自动根据`/etc/sysconfig/net-scripts/`目录下的配置来配�
 ## debian的intel网卡驱动安装
 
 搜索firmware-iwlwifi下载安装。<https://packages.debian.org/search?keywords=firmware-iwlwifi>
+
+## grub字体太小
+
+修改grub的分辨率：/etc/default/grub: GRUB_GFXMODE=1280x720。执行`update-grub`使配置生效。
