@@ -136,3 +136,7 @@ fcitx很多时候是无辜的。为了验证fcitx是否ok，最好是在edge、v
 * 使用`ctrl+shift+space`作为切换group的快捷键：（1）Enumerate Input Method Group Forward。
 
 这样后续就可以直接通过`ctrl + space`，切换中英文输入法；使用`ctrl+shift+space`，切换到常规布局group，而且切换到常规布局后，快捷键的布局也会一并切换。
+
+## 其他博主的一些优秀案例
+
+<https://qileq.com/article/202201270002/>
