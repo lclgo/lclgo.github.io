@@ -106,3 +106,12 @@ NetworkManager自动根据`/etc/sysconfig/net-scripts/`目录下的配置来配�
 ## grub字体太小
 
 修改grub的分辨率：/etc/default/grub: GRUB_GFXMODE=1280x720。执行`update-grub`使配置生效。
+
+## debian输入法配置
+
+fcitx很多时候是无辜的。为了验证fcitx是否ok，最好是在edge、vscode等非原生gtk应用上。
+
+* select system keyboard layout：这里配置的为底层的快捷键布局，edge的英文输入布局。建议直接用dvorak。选择后会生成一个对应的输入法。
+* shuangpin：这里配置的为双拼，可以点击键盘，配置布局，建议直接用qwerty的布局。
+* 可以通过添加group的方式给其他用户配置一个pinyin输入法。
+* terminal、notes等系统自带应用需要通过修改系统设置里面的language。改成中文，英文输入时是常规布局，改成dvorak,英文输入时是dvorak。
