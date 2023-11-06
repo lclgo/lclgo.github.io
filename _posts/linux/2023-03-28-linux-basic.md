@@ -67,6 +67,7 @@ CMD ["/sbin/init"]
 * 熄屏时间: gsettings set org.gnome.desktop.session idle-delay 1800
 * 熄屏后是否锁定: gsettings set org.gnome.desktop.screensaver lock-enabled true
 * 熄屏后到锁定的等待时间: gsettings set org.gnome.desktop.screensaver lock-delay 3600
+* 合上盖子不要休眠（笔记本连接显示器的时候，可以在合上盖子的时候也能识别HDMI接口）：/etc/systemd/login.conf: HandleLidSwitch=ignore
 
 ## 关于普通用户的登陆shell
 
