@@ -1,12 +1,8 @@
 ---
-layout:       post
-title:        "linux零散的配置和命令"
-author:       "licunlong"
-header-style: text
-catalog:      true
-tags:
-    - linux
-    - basic
+layout: post
+title: "linux零散的配置和命令"
+category: linux
+date: 2023-03-28 08:00:00 +0800
 ---
 
 ## 安装openEuler 22.03 虚拟机

@@ -1,12 +1,8 @@
 ---
-layout:       post
-title:        "systemd：应知应会"
-author:       "licunlong"
-header-style: text
-catalog:      true
-tags:
-    - systemd
-    - linux
+layout: post
+title: "systemd：应知应会"
+category: linux
+date: 2023-03-28 08:00:00 +0800
 ---
 
 # systemd

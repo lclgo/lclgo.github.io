@@ -1,11 +1,8 @@
 ---
-layout:       post
-title:        "如何在rust中调用c"
-author:       "licunlong"
-header-style: text
-catalog:      true
-tags:
-    - rust
+layout: post
+title: "如何在rust中调用c"
+category: rust
+date: 2023-03-28 08:00:00 +0800
 ---
 
 ## 在rust中调用c库

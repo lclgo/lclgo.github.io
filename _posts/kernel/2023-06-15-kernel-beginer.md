@@ -1,11 +1,8 @@
 ---
-layout:       post
-title:        "kernel代码阅读入门"
-author:       "licunlong"
-header-style: text
-catalog:      true
-tags:
-    - kernel
+layout: post
+title: "kernel代码阅读入门"
+category: kernel
+date: 2023-06-15 08:00:00 +0800
 ---
 
 ## 怎么查看系统调用？

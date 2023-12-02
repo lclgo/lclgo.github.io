@@ -1,11 +1,8 @@
 ---
-layout:       post
-title:        "rust的基础知识"
-author:       "licunlong"
-header-style: text
-catalog:      true
-tags:
-    - rust
+layout: post
+title: "rust的基础知识"
+category: rust
+date: 2023-03-28 08:00:00 +0800
 ---
 
 ## trait

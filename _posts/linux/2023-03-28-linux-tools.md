@@ -1,12 +1,8 @@
 ---
-layout:       post
-title:        "linux的一些工具配置"
-author:       "licunlong"
-header-style: text
-catalog:      true
-tags:
-    - basic
-    - linux
+layout: post
+title: "linux的一些工具配置"
+date: 2023-03-28 08:00:00 +0800
+category: linux
 ---
 
 ## samba

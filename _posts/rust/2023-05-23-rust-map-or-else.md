@@ -1,11 +1,8 @@
 ---
-layout:       post
-title:        "rust中Result快速进行值转换的语法糖"
-author:       "licunlong"
-header-style: text
-catalog:      true
-tags:
-    - rust
+layout: post
+title: "rust中Result快速进行值转换的语法糖"
+category: rust
+date: 2023-03-28 08:00:00 +0800
 ---
 
 Rust可以快速使用map、map_or等一大类的语法糖进行快速的`Result<T, E>`、`Option<V>`的值转换。但是这些东西在我看来很容易混淆，专门记录一下：

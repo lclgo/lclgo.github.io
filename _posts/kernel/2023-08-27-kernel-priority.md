@@ -1,11 +1,8 @@
 ---
-layout:       post
-title:        "linux进程优先级"
-author:       "licunlong"
-header-style: text
-catalog:      true
-tags:
-    - kernel
+layout: post
+title: "linux进程优先级"
+date: 2023-08-27 08:00:00 +0800
+category: kernel
 ---
 
 来源：<http://www.wowotech.net/process_management/process-priority.html>

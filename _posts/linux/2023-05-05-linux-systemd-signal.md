@@ -1,12 +1,8 @@
 ---
-layout:       post
-title:        "linux 1号进程（init）信号处理的特殊处理逻辑"
-author:       "licunlong"
-header-style: text
-catalog:      true
-tags:
-    - basic
-    - linux
+layout: post
+title: "linux 1号进程（init）信号处理的特殊处理逻辑"
+category: linux
+date: 2023-03-28 08:00:00 +0800
 ---
 
 1号进程（init进程）在linux的信号处理流程中有特殊的处理逻辑。例如我们向普通的进程发送SIGKILL，进程会退出；向1号进程发送SIGKILL则好像无事发生过。
