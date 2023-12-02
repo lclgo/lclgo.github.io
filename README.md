@@ -4,5 +4,8 @@ title: About
 permalink: /about/
 ---
 
-Hi, wish my blogs can help you.
+你好，希望我的blog能帮助到你。
 
+Hi, I hope my blogs can help you.
+
+联系我：<licunlong@hotmail.com>
