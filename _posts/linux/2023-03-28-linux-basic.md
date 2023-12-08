@@ -103,36 +103,6 @@ NetworkManager自动根据`/etc/sysconfig/net-scripts/`目录下的配置来配�
 
 修改grub的分辨率：/etc/default/grub: GRUB_GFXMODE=1280x720。执行`update-grub`使配置生效。
 
-## debian输入法配置
-
-fcitx很多时候是无辜的。为了验证fcitx是否ok，最好是在edge、vscode等非原生gtk应用上。
-
-* select system keyboard layout：这里配置的为底层的快捷键布局，edge的英文输入布局。建议直接用dvorak。选择后会生成一个对应的输入法。
-* shuangpin：这里配置的为双拼，可以点击键盘，配置布局，建议直接用qwerty的布局。
-* 可以通过添加group的方式给其他用户配置一个pinyin输入法。
-* terminal、notes等系统自带应用需要通过修改系统设置里面的language。改成中文，英文输入时是常规布局，改成dvorak,英文输入时是dvorak。
-
-### 自己使用的配置group
-
-必须按照顺序配置如下：
-
-1. Keybord-English(US)-English(Dvorak)
-2. Keybord-English(US)-English(Dvorak,alt.intl)
-3. Shuangpin （注意需要点击小键盘，切换Language=Any language, Layout=English(Us), Variant=Default）
-
-### 常规布局配置group
-
-* Keyboard-English(US)
-* Keyboard-Chinese
-* Pinyin
-
-### global options:
-
-* 使用`ctrl+space`作为快捷键：（1）Enumerate Input Method Forward，注意钩上“Skip first input method while enumerating”。（2）Activate Input Method。**注意：删掉“Trigger Input Method”的快捷键**。
-* 使用`ctrl+shift+space`作为切换group的快捷键：（1）Enumerate Input Method Group Forward。
-
-这样后续就可以直接通过`ctrl + space`，切换中英文输入法；使用`ctrl+shift+space`，切换到常规布局group，而且切换到常规布局后，快捷键的布局也会一并切换。
-
 ## samba
 
 在debian配置samba：
