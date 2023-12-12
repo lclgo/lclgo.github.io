@@ -12,6 +12,8 @@ date: 2023-06-15 08:00:00 +0800
 ## 零零散散
 
 * ttwu：try_to_wake_up
+* rcu: Read-copy-update：<https://www.cnblogs.com/linhaostudy/p/8463529.html>，高性能的读写锁。
+* ebpf: <https://cloudnative.to/blog/bpf-intro/#1-bpf>，性能观测工具、网络优化
 
 ## 内核态抢占
 
