@@ -34,3 +34,13 @@ int spin_trylock(spinlock_t *lock);     //申请自旋锁，如果申请成功�
 中断的相应必须及时，在中断处理期间又必须要屏蔽掉其他的中断。那么对于中断处理函数比较耗时的场景怎么处理呢？
 
 答案是分成两部分，确实需要在中断处理函数中处理的作为上半部分，下半部分（例如网卡的收发包）可以放在ksoftirqd内核线程中执行。ksoftirqd每个CPU核心存在一个，si占比表示当前软中断占用的CPU，如果过高会导致用户态的进程很卡。
+
+ksoftirq, tasklet, workqueue的区别
+
+|ksoftirq|tasklet|workqueue|
+|-|-|-|
+|依赖软中断子系统|依赖软中断子系统|不依赖软中断子系统|
+|运行在软中断上下文|运行在软中断上下文|运行在进程上下文|
+|open_softirq()注册，raise_softirq()唤醒|在运行时创建和初始化的softirq，softirq_init()初始化，tasklet_action()回调函数|create_worker()创建，wakeup_process()唤醒|
+|只能运行在一个CPU上|只运行在一个CPU上|可以在CPU之间切换|
+|静态编译，一般很少使用|可以在运行时创建和初始化|可以运行时创建和初始化|
