@@ -261,6 +261,17 @@ header.home {
 	text-align: left;
 }
 
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	border: 2px solid #ddd;
+}
+
 .post-title {
 	font-size: 1.5em;
 	color: #111;
