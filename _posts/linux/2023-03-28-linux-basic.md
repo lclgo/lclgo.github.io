@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "linux零散的配置和命令"
-category: linux
+category: GNU-linux
 date: 2023-03-28 08:00:00 +0800
 ---
 

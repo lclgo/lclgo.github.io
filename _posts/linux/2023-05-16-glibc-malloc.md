@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "glibc的内存分配器原理"
-category: linux
+category: GNU-linux
 date: 2023-03-28 08:00:00 +0800
 ---
 
