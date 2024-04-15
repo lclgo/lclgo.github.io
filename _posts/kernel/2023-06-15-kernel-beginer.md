@@ -32,3 +32,10 @@ date: 2023-06-15 08:00:00 +0800
 
 <http://www.wowotech.net/process_management/process-priority.html>
 
+## 对linux的性能调优
+
+很多时候我们只需要修改一下内核的参数（例如：sysctl参数），让内核运行在与业务场景、硬件相匹配的参数下，就能获得好的性能。这样就不需要定制内核、修改硬件，更为方便。
+
+熟悉一些常用的sysctl参数：
+
+<https://turbock79.cn/?p=4258>
