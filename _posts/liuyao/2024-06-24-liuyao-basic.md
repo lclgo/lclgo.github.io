@@ -22,3 +22,5 @@ category: liuyao
 ![img](https://github.com/Geass-LL/draw/raw/master/github-io/liuyao/dizhi-chonghehai.png)
 
 其实从图像上来看，六合是矩形的横边（绿色），六冲是矩形的对角线（蓝色），六害是矩形的竖边（红色）。
+
+## 月建+日辰
