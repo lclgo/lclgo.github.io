@@ -1,7 +1,7 @@
 ---
 layout: post
 category: kernel
-title: "缺页异常的处理"
+title: "缺页异常"
 date: 2024-02-03 15:00:00 +0800
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "linux 1号进程（init）信号处理的特殊处理逻辑"
+title: "1号进程（init）信号处理的特殊处理逻辑"
 category: GNU-linux
 date: 2023-03-28 08:00:00 +0800
 ---
