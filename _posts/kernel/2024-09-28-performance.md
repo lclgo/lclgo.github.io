@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "性能分析和调优"
-category: kernel, GNU-linux
+category: kernel
 date: 2024-09-28 15:00:00 +0800
 ---
 
