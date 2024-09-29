@@ -41,6 +41,7 @@ date: 2024-09-28 15:00:00 +0800
 
 * `perf stat -e dTLB-loads,dTLB-load-misses,iTLB-loads,iTLB-load-misses ./test`
 * `perf stat -p 1 -e cache-reference -e cache-misses`
+* `perf record -e dTLB-loads,dTLB-load-misses,iTLB-loads,iTLB-load-misses -p PID -o perf.data -- sleep 10` => `perf report -i perf.data`
 
 #### 微架构数据（TopDown）
 
