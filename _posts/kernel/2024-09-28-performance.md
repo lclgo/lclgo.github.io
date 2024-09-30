@@ -45,6 +45,14 @@ date: 2024-09-28 15:00:00 +0800
 
 #### 微架构数据（TopDown）
 
+基础知识：<https://zhuanlan.zhihu.com/p/34688930>
+<https://zhuanlan.zhihu.com/p/60569271>
+
+* Frontend bound（前端依赖）首先需要注意的是这里的前端并不是指UI的前端，这里的前端指的是x86指令解码阶段的耗时。
+* Backend bound（后端依赖）同样不同于其他“后端”的定义，这里指的是传统的CPU负责处理实际事务的能力。由于这一个部分相对其他部分来说，受程序指令的影响更为突出，这一块又划分出了两个分类。core bound（核心依赖）意味着系统将会更多的依赖于微指令的处理能力。memory bound（存储依赖）我这里不把memory翻译成内存的原因在于这里的memory包含了CPU L1～L3缓存的能力和传统的内存性能。
+* Bad speculation（错误的预测）这一部分指的是由于CPU乱序执行预测错误导致额外的系统开销。
+* Retiring（拆卸）字面理解是退休的意思，事实上这里指的是指令完成、等待指令切换，模块重新初始化的开销。
+
 `perf state -p 1 -ddd -- sleep 60`
 
 * IPC：每个cycle的Instruction数量（越大越好，最好能达到甚至超过1）
