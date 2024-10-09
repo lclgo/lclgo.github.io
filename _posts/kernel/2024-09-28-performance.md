@@ -65,7 +65,7 @@ date: 2024-09-28 15:00:00 +0800
 
 * `perf report --fields=overhead,symbol,dso --column-widths=0,40,0 -i perf.data`
 * 火焰图：`perf script > out.perf`
-* `perf annotate`：显示源代码的性能相关注释，帮助解决性能问题。
+* `perf annotate`：显示源代码的性能相关注释，帮助解决性能问题。(注意：依赖objdump，按下o后能够显示汇编代码位置)
 
 ## 硬件相关
 
