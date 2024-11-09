@@ -92,6 +92,7 @@ date: 2024-09-28 15:00:00 +0800
 * `/proc/sched_debug`：详细的调度统计数据，可视化的
 * `/proc/schedstat`：一连串数字，可以看到调度域信息
 * `/proc/sys/kernel/sched_schedstats`：是否启用kernel debug，启用后可能会有性能下降
+* `/proc/interrupts`：查看每个CPU的中断个数以及对应的中断编号
 
 ## 参数调优
 
