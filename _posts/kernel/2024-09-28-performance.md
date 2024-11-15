@@ -53,7 +53,7 @@ date: 2024-09-28 15:00:00 +0800
 * Bad speculation（错误的预测）这一部分指的是由于CPU乱序执行预测错误导致额外的系统开销。
 * Retiring（拆卸）字面理解是退休的意思，事实上这里指的是指令完成、等待指令切换，模块重新初始化的开销。
 
-多线程的程序可能存在`False sharing`：多个线程修改互相独立的变量时，如果这些变量共享同一个缓存行，就会导致缓存行失效和频繁替换。<https://zhuanlan.zhihu.com/p/65394173> <https://www.cnblogs.com/usmiles/p/15627229.html>
+【伪共享】多线程的程序可能存在`False sharing`：多个线程修改互相独立的变量时，如果这些变量共享同一个缓存行，就会导致缓存行失效和频繁替换。<https://zhuanlan.zhihu.com/p/65394173> <https://www.cnblogs.com/usmiles/p/15627229.html>
 
 `perf state -p 1 -ddd -- sleep 60`
 
