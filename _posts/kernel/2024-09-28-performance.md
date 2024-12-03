@@ -126,7 +126,7 @@ date: 2024-09-28 15:00:00 +0800
 
 ## cache、TLB miss
 
-使用大页降低TLB miss，通过数据预取（包括硬件预取、软件预取）降低L3 cache miss。
+使用大页降低TLB miss，通过数据预取（包括硬件预取、软件预取）降低L3 cache miss（也叫LLC cache，Last Level Cache）。
 
 ## 编译优化
 
