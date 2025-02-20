@@ -16,7 +16,7 @@ date: 2024-02-03 15:00:00 +0800
 
 参考：<https://zhuanlan.zhihu.com/p/195580742?utm_source=wechat_timeline>
 
-![img](https://github.com/Geass-LL/draw/raw/master/github-io/page-fault.webp)
+![img](https://github.com/lclgo/draw/raw/master/github-io/page-fault.webp)
 
 * 阶段1：判断缺页异常是否发生在内核线程或原子上下文中(中断也属于一种原子上下文)，是的话执行do_kernel_fault尝试修复或报段错误。
 * 阶段2：判断是否是内核态访问用户地址空间的情况，是的话判断是否是指定的三种情况，是则报段错误。

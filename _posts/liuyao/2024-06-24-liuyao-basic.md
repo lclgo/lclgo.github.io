@@ -9,7 +9,7 @@ category: liuyao
 
 ### 八卦
 
-<img src="https://github.com/Geass-LL/draw/raw/master/github-io/liuyao/bagua.png" style="zoom:50%" />
+<img src="https://github.com/lclgo/draw/raw/master/github-io/liuyao/bagua.png" style="zoom:50%" />
 
 ### 地支的六合、六冲、六害
 
@@ -19,7 +19,7 @@ category: liuyao
 
 相合关系：12/34，相冲关系：13/24，相害关系：14/23。
 
-![img](https://github.com/Geass-LL/draw/raw/master/github-io/liuyao/dizhi-chonghehai.drawio.png)
+![img](https://github.com/lclgo/draw/raw/master/github-io/liuyao/dizhi-chonghehai.drawio.png)
 
 其实从图像上来看，六合是矩形的横边（绿色），六冲是矩形的对角线（蓝色），六害是矩形的竖边（红色）。
 
