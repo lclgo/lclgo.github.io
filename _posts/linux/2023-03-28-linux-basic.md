@@ -5,28 +5,6 @@ category: GNU-linux
 date: 2023-03-28 08:00:00 +0800
 ---
 
-## 安装openEuler 22.03 虚拟机
-
-**注意:20.03版本的虚拟机貌似不好启用网卡相关的配置.需要使用openEuler 22.03版本.**
-
-**虚拟网卡的类型需要使用NAT模式,网桥模式一般的笔记本都不支持.**
-
-**注意在虚拟机配置nameserver,在虚拟机配置GATEWAY**
-
-```shell
-# /etc/resolv.conf
-nameserver 192.168.122.1
-```
-
-```shell
-# /etc/sysconfig/network-scripts/ifcfg-ens7
-GATEWAY=192.168.122.1
-```
-
-## 安装CentOS6.0虚拟机
-
-其实网卡已经添加好了，通过`ip addr`能够查看到，需要做的是让它开机自启即可。直接修改`/etc/sysconfig/network-scripts/ifcfg-eth0`文件。
-
 ## docker 使用
 
 [docker使用指南](https://yeasy.gitbook.io/docker_practice/)
