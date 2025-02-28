@@ -21,7 +21,7 @@ Todo
 |-|-|
 |/proc/sys/|内核参数的读写路径|
 |/proc/iomem|物理地址布局，内核实际可用的物理内存是System RAM，free查到的结果需要从System RAM中删除一些Reserved等特殊用途的物理内存。|
-|/proc/meminfo|内存数据统计：匿名页、文件页、大页、交换分区等等大小 <https://blog.39hope.com/?p=184><br>Active(file) + Inactive(file) + Shmem = Buffers + cached|
+|/proc/meminfo|内存数据统计：匿名页、文件页、大页、交换分区等等大小 <https://blog.39hope.com/?p=184><br>* NR_FILE_PAGES = Active(file) + Inactive(file) + Shmem<br>* cached = NR_FILE_PAGES - swap_cache - buffer<br>* swap_cache：匿名页swap out后重新swap in后分配的内存，会使用到swap_cache的有Shmem、AnonPages，swap_cache的管理机制与实体文件类似，也属于page_cache<br>[参考资料](https://www.jianshu.com/p/391f42f8fb0d)|
 |/proc/cpuinfo|CPU详情：核心、厂商、支持的功能等|
 |/proc/buddyinfo|伙伴系统的详细信息|
 |/proc/slabinfo|slab的详细信息|
