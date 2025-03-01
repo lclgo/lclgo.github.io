@@ -30,6 +30,7 @@ Todo
 |/proc/PID/maps|进程虚拟地址布局|
 |/proc/PID/smaps|类似/proc/PID/maps，提供更多细节：<https://www.cnblogs.com/aspirs/p/13896571.html>|
 |/proc/sys/kernel/sched_domain|CPU的调度域|
-|==|==|
+|/proc/vmstat|获取系统内存使用、页面交换、页面回收等方面的数据，例如：nr_free_pages/nr_inactive_anon/nr_active_anon/nr_inactive_file/nr_active_file/nr_dirty/nr_writeback/pgfault/pgmajfault|
+|************|************|
 |/sys/kernel/mm|内存子系统的常用配置：hugepages、swap、transparent_hugepage|
 |/sys/devices/system/cpu|CPU的详细信息，拓扑结构|
